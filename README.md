@@ -1,2 +1,2 @@
 # 3260_Car_Simulator
-# ADAM is cool
+# ADAM is NOT cool
