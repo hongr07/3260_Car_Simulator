@@ -6,6 +6,7 @@ import model.CarObject.Direction;
 public class ControlPanelController {
 
 	private CarObject carObject;
+	private ControlPanelView control_panel;
 	
 	public ControlPanelController () {
 		this.carObject = new CarObject();
@@ -19,7 +20,7 @@ public class ControlPanelController {
 	}
 	
 	public void renderControlPanel() {
-		
+		control_panel = new ControlPanelView();
 	}
 	
 	public void changeTemperature() {
