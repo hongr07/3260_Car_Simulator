@@ -16,7 +16,7 @@ public class CarObject {
 		this.temperature = 0;
 		this.direction = Direction.North;
 		this.engineOn = false;
-		this.fuel = 0;
+		this.fuel = 100;
 		this.speed = 0;
 	}
 	

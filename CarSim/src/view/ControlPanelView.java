@@ -1,4 +1,4 @@
-package controllers;
+package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -7,9 +7,17 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.MatteBorder;
 
+import controllers.ControlPanelController;
+
 public class ControlPanelView {
+	
+	public enum ChangeType {
+		UP, DOWN
+	}
+	
 	private JFrame frame;
 	private JPanel control_panel;
+	private ControlPanelController panelController;
 	
 	private DirectionalPad directional_pad;
 	private SpeedControl speed_control;
@@ -25,6 +33,16 @@ public class ControlPanelView {
 		frame.setVisible(true);
 	}
 
+	/**
+	 * Create the application.
+	 * with reference to controller
+	 */
+	public ControlPanelView(ControlPanelController panelController) {
+		this.panelController = panelController;
+		render();
+		frame.setVisible(true);
+	}
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -45,11 +63,11 @@ public class ControlPanelView {
 		gbl_control_panel.rowWeights = new double[]{1.0, Double.MIN_VALUE};
 		control_panel.setLayout(gbl_control_panel);
 		
-		directional_pad = new DirectionalPad(control_panel);
-		speed_control = new SpeedControl(control_panel);
-		temp_control = new TemperatureControl(control_panel);
-		fuel_control = new FuelControl(control_panel);
-		engine_control = new EngineControl(control_panel);
+		directional_pad = new DirectionalPad(control_panel,this.panelController);
+		speed_control = new SpeedControl(control_panel,this.panelController);
+		temp_control = new TemperatureControl(control_panel,this.panelController);
+		fuel_control = new FuelControl(control_panel,this.panelController);
+		engine_control = new EngineControl(control_panel,this.panelController);
 	}
 
 }
