@@ -48,7 +48,7 @@ public class ControlPanelController {
 			
 			//update car view
 			//here
-			sim_view.updateView(carObject);
+			sim_view.updateView();
 		} catch (Exception e) {
 			System.out.println("Error in changetemp()");
 			System.out.println(e);
@@ -64,7 +64,7 @@ public class ControlPanelController {
 			
 			//update car view
 			//here
-			sim_view.updateView(carObject);
+			sim_view.updateView();
 		} catch (Exception e) {
 			System.out.println("Error in change direction()");
 			System.out.println(e);
@@ -86,7 +86,7 @@ public class ControlPanelController {
 			carObject.printObject();
 			//update car view
 			//here
-			sim_view.updateView(carObject);
+			sim_view.updateView();
 		} catch (Exception e) {
 			System.out.println("Error in changeEngine()");
 			System.out.println(e);
@@ -110,7 +110,7 @@ public class ControlPanelController {
 			
 			//update car view
 			//here
-			sim_view.updateView(carObject);
+			sim_view.updateView();
 		} catch (Exception e) {
 			System.out.println("Error in changefuel()");
 			System.out.println(e);
@@ -134,7 +134,7 @@ public class ControlPanelController {
 			
 			//update car view
 			//here
-			sim_view.updateView(carObject);
+			sim_view.updateView();
 		} catch (Exception e) {
 			System.out.println("Error in changespeed()");
 			System.out.println(e);

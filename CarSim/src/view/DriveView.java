@@ -210,8 +210,7 @@ public class DriveView {
 		frame.getContentPane().add(simPanel);
 	}
 	
-	public void updateView(CarObject car) {
-		this.car = car;
+	public void updateView() {
 		tempField.setText(Float.toString(this.car.getTemperature()));
 		speedField.setText(Integer.toString(car.getSpeed()));
 		fuelField.setText(Float.toString(car.getFuel()));
