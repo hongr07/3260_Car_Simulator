@@ -10,6 +10,11 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextField;
+
+import com.sun.java.swing.plaf.windows.resources.windows;
+
+import model.CarObject;
+
 import java.awt.Color;
 
 public class DriveView {
@@ -25,28 +30,38 @@ public class DriveView {
 	private JTextField timeField;
 	private JTextField fuelField;
 	private JTextField tempField;
+	private JTextField textField;
+	private JTextField textField_1;
+	
+	private CarObject car;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					DriveView window = new DriveView();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					DriveView window = new DriveView();
+//					window.frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the application.
 	 */
 	public DriveView() {
 		initialize();
+	}
+	
+	public DriveView(CarObject car) {
+		this.car = car;
+		initialize();
+		frame.setVisible(true);
 	}
 
 	/**
@@ -79,6 +94,7 @@ public class DriveView {
 		
 		dirField = new JTextField();
 		dirField.setEditable(false);
+		dirField.setText(car.getDirectionString());
 		GridBagConstraints gbc_dirField = new GridBagConstraints();
 		gbc_dirField.gridwidth = 4;
 		gbc_dirField.insets = new Insets(0, 0, 5, 5);
@@ -98,6 +114,7 @@ public class DriveView {
 		
 		fuelField = new JTextField();
 		fuelField.setEditable(false);
+		fuelField.setText(Float.toString(car.getFuel()));
 		GridBagConstraints gbc_fuelField = new GridBagConstraints();
 		gbc_fuelField.gridwidth = 5;
 		gbc_fuelField.insets = new Insets(0, 0, 5, 5);
@@ -117,6 +134,7 @@ public class DriveView {
 		
 		speedField = new JTextField();
 		speedField.setEditable(false);
+		speedField.setText(Integer.toString(car.getSpeed()));
 		GridBagConstraints gbc_speedField = new GridBagConstraints();
 		gbc_speedField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_speedField.gridwidth = 3;
@@ -155,6 +173,7 @@ public class DriveView {
 		
 		timeField = new JTextField();
 		timeField.setEditable(false);
+//		timeField.setText(Float.toString(this.car.get()));
 		GridBagConstraints gbc_timeField = new GridBagConstraints();
 		gbc_timeField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_timeField.anchor = GridBagConstraints.EAST;
@@ -175,6 +194,7 @@ public class DriveView {
 		
 		tempField = new JTextField();
 		tempField.setEditable(false);
+		tempField.setText(Float.toString(this.car.getTemperature()));
 		tempField.setColumns(10);
 		GridBagConstraints gbc_tempField = new GridBagConstraints();
 		gbc_tempField.gridwidth = 5;
@@ -188,5 +208,13 @@ public class DriveView {
 		simPanel.setBackground(Color.WHITE);
 		simPanel.setBounds(6, 6, 650, 382);
 		frame.getContentPane().add(simPanel);
+	}
+	
+	public void updateView(CarObject car) {
+		this.car = car;
+		tempField.setText(Float.toString(this.car.getTemperature()));
+		speedField.setText(Integer.toString(car.getSpeed()));
+		fuelField.setText(Float.toString(car.getFuel()));
+		dirField.setText(car.getDirectionString());
 	}
 }

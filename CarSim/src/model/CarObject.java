@@ -34,8 +34,29 @@ public class CarObject {
 	}
 	public void setTemperature(float temperature) {
 		this.temperature = temperature;
+		//update view
 	}
 	public Direction getDirection() {
+		return direction;
+	}
+	public String getDirectionString() {
+		String direction = "";
+		switch (this.direction) {
+		case East:
+			direction = "East";
+			break;
+		case West:
+			direction = "West";
+			break;
+		case North:
+			direction = "North";
+			break;
+		case South:
+			direction = "South";
+			break;
+		default:
+			break;
+		}
 		return direction;
 	}
 	public void setDirection(Direction direction) {

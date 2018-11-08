@@ -4,11 +4,13 @@ import model.CarObject;
 import model.CarObject.Direction;
 import view.ControlPanelView;
 import view.ControlPanelView.ChangeType;
+import view.DriveView;
 
 public class ControlPanelController {
 
 	private CarObject carObject;
 	private ControlPanelView control_panel;
+	private DriveView sim_view;
 	
 	public ControlPanelController () {
 		this.carObject = new CarObject();
@@ -18,11 +20,15 @@ public class ControlPanelController {
 
 	public void initialize() {
 		renderControlPanel();
-//		renderSimulation();
+		renderSimulation();
 	}
 	
 	public void renderControlPanel() {
 		control_panel = new ControlPanelView(this);
+	}
+	
+	public void renderSimulation() {
+		sim_view = new DriveView(carObject);
 	}
 	
 	//change temperature by 0.5
@@ -42,7 +48,7 @@ public class ControlPanelController {
 			
 			//update car view
 			//here
-			
+			sim_view.updateView(carObject);
 		} catch (Exception e) {
 			System.out.println("Error in changetemp()");
 			System.out.println(e);
@@ -58,7 +64,7 @@ public class ControlPanelController {
 			
 			//update car view
 			//here
-			
+			sim_view.updateView(carObject);
 		} catch (Exception e) {
 			System.out.println("Error in change direction()");
 			System.out.println(e);
@@ -80,7 +86,7 @@ public class ControlPanelController {
 			carObject.printObject();
 			//update car view
 			//here
-			
+			sim_view.updateView(carObject);
 		} catch (Exception e) {
 			System.out.println("Error in changeEngine()");
 			System.out.println(e);
@@ -104,7 +110,7 @@ public class ControlPanelController {
 			
 			//update car view
 			//here
-			
+			sim_view.updateView(carObject);
 		} catch (Exception e) {
 			System.out.println("Error in changefuel()");
 			System.out.println(e);
@@ -128,7 +134,7 @@ public class ControlPanelController {
 			
 			//update car view
 			//here
-			
+			sim_view.updateView(carObject);
 		} catch (Exception e) {
 			System.out.println("Error in changespeed()");
 			System.out.println(e);
