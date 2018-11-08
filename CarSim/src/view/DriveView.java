@@ -23,8 +23,8 @@ public class DriveView {
 	 */
 	private final JTextField textField_3 = new JTextField();
 	private JTextField timeField;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField fuelField;
+	private JTextField tempField;
 
 	/**
 	 * Launch the application.
@@ -88,24 +88,24 @@ public class DriveView {
 		displayPanel.add(dirField, gbc_dirField);
 		dirField.setColumns(10);
 		
-		JLabel lblFuel = new JLabel("FUEL");
-		GridBagConstraints gbc_lblFuel = new GridBagConstraints();
-		gbc_lblFuel.anchor = GridBagConstraints.WEST;
-		gbc_lblFuel.insets = new Insets(0, 0, 5, 5);
-		gbc_lblFuel.gridx = 5;
-		gbc_lblFuel.gridy = 4;
-		displayPanel.add(lblFuel, gbc_lblFuel);
+		JLabel fuelLabel = new JLabel("FUEL");
+		GridBagConstraints gbc_fuelLabel = new GridBagConstraints();
+		gbc_fuelLabel.anchor = GridBagConstraints.WEST;
+		gbc_fuelLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_fuelLabel.gridx = 5;
+		gbc_fuelLabel.gridy = 4;
+		displayPanel.add(fuelLabel, gbc_fuelLabel);
 		
-		textField = new JTextField();
-		textField.setEditable(false);
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.gridwidth = 5;
-		gbc_textField.insets = new Insets(0, 0, 5, 5);
-		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.gridx = 7;
-		gbc_textField.gridy = 4;
-		displayPanel.add(textField, gbc_textField);
-		textField.setColumns(10);
+		fuelField = new JTextField();
+		fuelField.setEditable(false);
+		GridBagConstraints gbc_fuelField = new GridBagConstraints();
+		gbc_fuelField.gridwidth = 5;
+		gbc_fuelField.insets = new Insets(0, 0, 5, 5);
+		gbc_fuelField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_fuelField.gridx = 7;
+		gbc_fuelField.gridy = 4;
+		displayPanel.add(fuelField, gbc_fuelField);
+		fuelField.setColumns(10);
 		
 		JLabel speedLabel = new JLabel("SPEED km/h");
 		GridBagConstraints gbc_speedLabel = new GridBagConstraints();
@@ -165,24 +165,24 @@ public class DriveView {
 		displayPanel.add(timeField, gbc_timeField);
 		timeField.setColumns(10);
 		
-		JLabel lblTemperature = new JLabel("TEMPERATURE");
-		GridBagConstraints gbc_lblTemperature = new GridBagConstraints();
-		gbc_lblTemperature.anchor = GridBagConstraints.WEST;
-		gbc_lblTemperature.insets = new Insets(0, 0, 5, 5);
-		gbc_lblTemperature.gridx = 5;
-		gbc_lblTemperature.gridy = 8;
-		displayPanel.add(lblTemperature, gbc_lblTemperature);
+		JLabel tempLabel = new JLabel("TEMPERATURE");
+		GridBagConstraints gbc_tempLabel = new GridBagConstraints();
+		gbc_tempLabel.anchor = GridBagConstraints.WEST;
+		gbc_tempLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_tempLabel.gridx = 5;
+		gbc_tempLabel.gridy = 8;
+		displayPanel.add(tempLabel, gbc_tempLabel);
 		
-		textField_1 = new JTextField();
-		textField_1.setEditable(false);
-		textField_1.setColumns(10);
-		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-		gbc_textField_1.gridwidth = 5;
-		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_1.gridx = 7;
-		gbc_textField_1.gridy = 8;
-		displayPanel.add(textField_1, gbc_textField_1);
+		tempField = new JTextField();
+		tempField.setEditable(false);
+		tempField.setColumns(10);
+		GridBagConstraints gbc_tempField = new GridBagConstraints();
+		gbc_tempField.gridwidth = 5;
+		gbc_tempField.insets = new Insets(0, 0, 5, 5);
+		gbc_tempField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_tempField.gridx = 7;
+		gbc_tempField.gridy = 8;
+		displayPanel.add(tempField, gbc_tempField);
 		
 		JPanel simPanel = new JPanel();
 		simPanel.setBackground(Color.WHITE);
