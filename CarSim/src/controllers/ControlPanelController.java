@@ -13,7 +13,7 @@ public class ControlPanelController {
 	private DriveView sim_view;
 	
 	public ControlPanelController () {
-		this.carObject = new CarObject();
+		this.carObject = CarObject.getInstance();
 		carObject.printObject();
 		initialize();
 	}

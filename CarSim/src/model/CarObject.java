@@ -6,28 +6,33 @@ public class CarObject {
 	public enum Direction {
 	    North, South, East, West 
 	}
-	private float temperature;
-	private Direction direction;
-	private boolean engineOn;
-	private float fuel;
-	private int speed;
+	private float temperature = 0;
+	private Direction direction = Direction.North;
+	private boolean engineOn = false;
+	private float fuel = 100;
+	private int speed = 0;
 	
-	public CarObject() {
-		this.temperature = 0;
-		this.direction = Direction.North;
-		this.engineOn = false;
-		this.fuel = 100;
-		this.speed = 0;
+	private static CarObject carInstance = new CarObject();
+	
+	private CarObject() {}
+	
+	public static CarObject getInstance() {
+		
+		if (carInstance == null) {
+			carInstance = new CarObject();
+		}
+		
+		return carInstance;
 	}
 	
-	public CarObject(float temp, Direction dir, boolean engine, float fuel, int speed) {
-		// TODO Auto-generated constructor stub
-		this.temperature = temp;
-		this.direction = dir;
-		this.engineOn = engine;
-		this.fuel = fuel;
-		this.speed = speed;
-	}
+//	public CarObject(float temp, Direction dir, boolean engine, float fuel, int speed) {
+//		// TODO Auto-generated constructor stub
+//		this.temperature = temp;
+//		this.direction = dir;
+//		this.engineOn = engine;
+//		this.fuel = fuel;
+//		this.speed = speed;
+//	}
 	
 	public float getTemperature() {
 		return temperature;

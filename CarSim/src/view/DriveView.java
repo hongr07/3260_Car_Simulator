@@ -11,6 +11,14 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextField;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 import com.sun.java.swing.plaf.windows.resources.windows;
 
 import model.CarObject;
@@ -161,6 +169,7 @@ public class DriveView {
 		gbc_dateField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_dateField.gridx = 8;
 		gbc_dateField.gridy = 6;
+		dateField.setText(java.time.LocalDate.now().toString());
 		displayPanel.add(dateField, gbc_dateField);
 		
 		JLabel timeLabel = new JLabel("TIME");
@@ -168,12 +177,11 @@ public class DriveView {
 		gbc_timeLabel.anchor = GridBagConstraints.LINE_START;
 		gbc_timeLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_timeLabel.gridx = 5;
-		gbc_timeLabel.gridy = 7;
+		gbc_timeLabel.gridy = 7;		
 		displayPanel.add(timeLabel, gbc_timeLabel);
 		
 		timeField = new JTextField();
 		timeField.setEditable(false);
-//		timeField.setText(Float.toString(this.car.get()));
 		GridBagConstraints gbc_timeField = new GridBagConstraints();
 		gbc_timeField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_timeField.anchor = GridBagConstraints.EAST;
@@ -181,6 +189,9 @@ public class DriveView {
 		gbc_timeField.insets = new Insets(0, 0, 5, 5);
 		gbc_timeField.gridx = 7;
 		gbc_timeField.gridy = 7;
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("hh:mm a");
+		LocalTime localTime = LocalTime.now();
+		timeField.setText(dtf.format(localTime));
 		displayPanel.add(timeField, gbc_timeField);
 		timeField.setColumns(10);
 		
