@@ -23,6 +23,8 @@ public class DriveView {
 	 */
 	private final JTextField textField_3 = new JTextField();
 	private JTextField timeField;
+	private JTextField textField;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -58,12 +60,12 @@ public class DriveView {
 		frame.getContentPane().setLayout(null);
 		
 		JPanel displayPanel = new JPanel();
-		displayPanel.setBounds(668, 6, 179, 382);
+		displayPanel.setBounds(656, 6, 197, 382);
 		frame.getContentPane().add(displayPanel);
 		GridBagLayout gbl_displayPanel = new GridBagLayout();
 		gbl_displayPanel.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 94, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gbl_displayPanel.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_displayPanel.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_displayPanel.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_displayPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		displayPanel.setLayout(gbl_displayPanel);
 		
@@ -72,7 +74,7 @@ public class DriveView {
 		gbc_dirLabel.anchor = GridBagConstraints.LINE_START;
 		gbc_dirLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_dirLabel.gridx = 5;
-		gbc_dirLabel.gridy = 4;
+		gbc_dirLabel.gridy = 3;
 		displayPanel.add(dirLabel, gbc_dirLabel);
 		
 		dirField = new JTextField();
@@ -82,9 +84,28 @@ public class DriveView {
 		gbc_dirField.insets = new Insets(0, 0, 5, 5);
 		gbc_dirField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_dirField.gridx = 8;
-		gbc_dirField.gridy = 4;
+		gbc_dirField.gridy = 3;
 		displayPanel.add(dirField, gbc_dirField);
 		dirField.setColumns(10);
+		
+		JLabel lblFuel = new JLabel("FUEL");
+		GridBagConstraints gbc_lblFuel = new GridBagConstraints();
+		gbc_lblFuel.anchor = GridBagConstraints.WEST;
+		gbc_lblFuel.insets = new Insets(0, 0, 5, 5);
+		gbc_lblFuel.gridx = 5;
+		gbc_lblFuel.gridy = 4;
+		displayPanel.add(lblFuel, gbc_lblFuel);
+		
+		textField = new JTextField();
+		textField.setEditable(false);
+		GridBagConstraints gbc_textField = new GridBagConstraints();
+		gbc_textField.gridwidth = 5;
+		gbc_textField.insets = new Insets(0, 0, 5, 5);
+		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField.gridx = 7;
+		gbc_textField.gridy = 4;
+		displayPanel.add(textField, gbc_textField);
+		textField.setColumns(10);
 		
 		JLabel speedLabel = new JLabel("SPEED km/h");
 		GridBagConstraints gbc_speedLabel = new GridBagConstraints();
@@ -143,6 +164,25 @@ public class DriveView {
 		gbc_timeField.gridy = 7;
 		displayPanel.add(timeField, gbc_timeField);
 		timeField.setColumns(10);
+		
+		JLabel lblTemperature = new JLabel("TEMPERATURE");
+		GridBagConstraints gbc_lblTemperature = new GridBagConstraints();
+		gbc_lblTemperature.anchor = GridBagConstraints.WEST;
+		gbc_lblTemperature.insets = new Insets(0, 0, 5, 5);
+		gbc_lblTemperature.gridx = 5;
+		gbc_lblTemperature.gridy = 8;
+		displayPanel.add(lblTemperature, gbc_lblTemperature);
+		
+		textField_1 = new JTextField();
+		textField_1.setEditable(false);
+		textField_1.setColumns(10);
+		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
+		gbc_textField_1.gridwidth = 5;
+		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
+		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField_1.gridx = 7;
+		gbc_textField_1.gridy = 8;
+		displayPanel.add(textField_1, gbc_textField_1);
 		
 		JPanel simPanel = new JPanel();
 		simPanel.setBackground(Color.WHITE);
