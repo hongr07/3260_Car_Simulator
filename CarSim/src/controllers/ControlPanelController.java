@@ -64,6 +64,8 @@ public class ControlPanelController {
 			
 			//update car view
 			//here
+			sim_view.carView.setDirection(carObject.getDirection());
+			sim_view.carView.repaint();
 			sim_view.updateView();
 		} catch (Exception e) {
 			System.out.println("Error in change direction()");
@@ -78,8 +80,17 @@ public class ControlPanelController {
 			
 				if (engine) {
 					carObject.setEngineOn(false);	
+					sim_view.carView.setDirection(carObject.getDirection());
+					//set fuel to false if engine is off
+					sim_view.carView.setEngine(false);
+					sim_view.carView.setFuel(0);
+					sim_view.carView.repaint();
 				} else {
 					carObject.setEngineOn(true);
+					sim_view.carView.setDirection(carObject.getDirection());
+					sim_view.carView.setEngine(true);
+					sim_view.carView.setFuel(carObject.getFuel());
+					sim_view.carView.repaint();
 				}
 			System.out.println(carObject.isEngineOn());
 			System.out.println("----------");
@@ -100,10 +111,15 @@ public class ControlPanelController {
 			if (type == ChangeType.UP) {
 				if (fuel < 100) {
 					carObject.setFuel((fuel+1f));	
+					sim_view.carView.setEngine(true);
 				}
 			} else if (type == ChangeType.DOWN) {
 				if (fuel > 0) {
 					carObject.setFuel((fuel-1f));
+				}
+				else if(fuel =< 0) {
+					//if fuel becomes 0 stop car simulation
+					sim_view.carView.setEngine(false);
 				}
 			}
 			System.out.println(carObject.getFuel());

@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.EventQueue;
+import java.awt.Graphics;
 
 import javax.swing.JFrame;
 import java.awt.GridLayout;
@@ -42,6 +43,7 @@ public class DriveView {
 	private JTextField textField_1;
 	
 	private CarObject car;
+	public CarView carView;
 
 	/**
 	 * Launch the application.
@@ -81,6 +83,10 @@ public class DriveView {
 		frame.setBounds(100, 100, 853, 416);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		
+		carView = new CarView();
+		carView.setBounds(5,5,651,383);
+		frame.getContentPane().add(carView);
 		
 		JPanel displayPanel = new JPanel();
 		displayPanel.setBounds(656, 6, 197, 382);
@@ -227,4 +233,5 @@ public class DriveView {
 		fuelField.setText(Float.toString(car.getFuel()));
 		dirField.setText(car.getDirectionString());
 	}
+	
 }
