@@ -117,7 +117,7 @@ public class ControlPanelController {
 				if (fuel > 0) {
 					carObject.setFuel((fuel-1f));
 				}
-				else if(fuel =< 0) {
+				else if(fuel <= 0) {
 					//if fuel becomes 0 stop car simulation
 					sim_view.carView.setEngine(false);
 				}
