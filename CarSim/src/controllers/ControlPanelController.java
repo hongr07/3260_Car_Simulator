@@ -63,7 +63,6 @@ public class ControlPanelController {
 			System.out.println(carObject.getDirection());
 			
 			//update car view
-			//here
 			sim_view.carView.setDirection(carObject.getDirection());
 			sim_view.carView.repaint();
 			sim_view.updateView();
@@ -83,13 +82,17 @@ public class ControlPanelController {
 					sim_view.carView.setDirection(carObject.getDirection());
 					//set fuel to false if engine is off
 					sim_view.carView.setEngine(false);
-					sim_view.carView.setFuel(0);
+					if(carObject.getSpeed() > 0) {
+						sim_view.carView.setFuel(carObject.getFuel());
+					}
 					sim_view.carView.repaint();
 				} else {
 					carObject.setEngineOn(true);
 					sim_view.carView.setDirection(carObject.getDirection());
 					sim_view.carView.setEngine(true);
-					sim_view.carView.setFuel(carObject.getFuel());
+					if(carObject.getSpeed() > 0) {
+						sim_view.carView.setFuel(carObject.getFuel());
+					}
 					sim_view.carView.repaint();
 				}
 			System.out.println(carObject.isEngineOn());
@@ -109,17 +112,22 @@ public class ControlPanelController {
 		try {
 			float fuel = carObject.getFuel();
 			if (type == ChangeType.UP) {
-				if (fuel < 100) {
+				if (fuel < 100 && fuel > 0) {
 					carObject.setFuel((fuel+1f));	
-					sim_view.carView.setEngine(true);
+				} 
+				else if (fuel == 0) {
+					carObject.setFuel((fuel+1f));	
+					sim_view.carView.setFuel(carObject.getFuel());
+					sim_view.carView.repaint();
 				}
 			} else if (type == ChangeType.DOWN) {
-				if (fuel > 0) {
+				if (fuel > 1) {
 					carObject.setFuel((fuel-1f));
 				}
-				else if(fuel <= 0) {
+				else if(fuel == 1) {
 					//if fuel becomes 0 stop car simulation
-					sim_view.carView.setEngine(false);
+					carObject.setFuel((fuel-1f));
+					sim_view.carView.setFuel(carObject.getFuel());
 				}
 			}
 			System.out.println(carObject.getFuel());
@@ -138,12 +146,21 @@ public class ControlPanelController {
 		try {
 			int speed = carObject.getSpeed();
 			if (type == ChangeType.UP) {
-				if (speed < 120) {
+				if (speed < 120 && speed > 0) {
 					carObject.setSpeed((speed+1));	
 				}
+				else if (speed == 0) {
+					carObject.setSpeed((speed+1));
+					sim_view.carView.setFuel(carObject.getFuel());
+					sim_view.carView.repaint();
+				}
 			} else if (type == ChangeType.DOWN) {
-				if (speed > 0) {
+				if (speed > 1) {
 					carObject.setSpeed((speed-1));
+				}
+				else if(speed == 1) {
+					carObject.setSpeed((speed-1));
+					sim_view.carView.setFuel(0);
 				}
 			}
 			System.out.println(carObject.getSpeed());

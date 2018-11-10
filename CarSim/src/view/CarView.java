@@ -2,21 +2,43 @@ package view;
 
 import javax.swing.*;
 
-import model.CarObject.Direction;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.Timer;
 
-public class CarView extends JPanel /*implements ActionListener*/{
-	//Timer t = new Timer(300, this);
+public class CarView extends JPanel implements ActionListener {
+
 	public enum Direction {
 	    North, South, East, West 
 	}
 	private Direction direction = Direction.North;
-	private int loops = 0, start = 0, end = 20; 
 	private boolean engineOn = false;
 	private boolean hasFuel = false;
+	Timer tm = new Timer(10, this);
+	
+	//define values for vertical road line coordinates
+	int x = 0, y = 20;
+	int m = 60, s = 80; 
+	int j = 110, b = 130;
+	int p = 160, q = 180;
+	int a = 220, c = 240;
+	int k = 280, f = 300;
+	int d = 340, h = 360;
+	
+	//define values for horizontal road line coordinates
+	int x11 = 0, y11 = 20;
+	int m11 = 60, s11 = 80; 
+	int j11 = 110, b11 = 130;
+	int p11 = 160, q11 = 180;
+	int a11 = 220, c11 = 240;
+	int k11 = 280, f11 = 300;
+	int d11 = 340, h11 = 360;
+	int x1 = 400, y1 = 420;
+	int m1 = 460, s1 = 480; 
+	int j1 = 520, b1 = 540;
+	int p1 = 580, q1 = 600;
+	int vel = 2;
 	
 	public void paint(Graphics g) {
 		g.setColor(Color.green.darker());
@@ -30,15 +52,8 @@ public class CarView extends JPanel /*implements ActionListener*/{
 			drawHorizontalRoad(g);
 		}
 		
-		//begin moving car if engine is on and fuel is greater than 0
-//		if(engineOn == true && hasFuel == true) {
-//			if(direction == Direction.North) {
-//				velX = velY = 2;
-//			}
-//			t.start();
-//		}
-		
 	}
+	
 	
 	public void drawVerticalRoad(Graphics g) {
 
@@ -48,23 +63,24 @@ public class CarView extends JPanel /*implements ActionListener*/{
 		g.fillRect(285, 0, 90, 400);
 		
 		Graphics2D g2d = (Graphics2D) g;
-		
 		g2d.setColor(Color.white);
 		
-		int i;
-
-		// creates a solid stroke with line width is 4
-		Stroke stroke = new BasicStroke(4);
-		for(i = 0; i < 16; i++) {
-			g2d.setStroke(stroke);
-			g2d.drawLine(330, start, 330, end);
-			start = end + 10;
-			end = start + 20;
-		}
-//		if(engineOn == false) {
-			start = 0;
-			end = 20;
-//		}
+		//draw road lines for vertical road
+		g2d.drawLine(330,x,330,y);
+		g2d.drawLine(330,m,330,s);
+		g2d.drawLine(330,j,330,b);
+		g2d.drawLine(330,p,330,q);
+		g2d.drawLine(330,a,330,c);
+		g2d.drawLine(330,k,330,f);
+		g2d.drawLine(330,d,330,h);
+		
+		// if engine is one, animate lines and start timer
+		if (engineOn == true && hasFuel == true) {
+			tm.start();
+		} else {
+			tm.stop();
+		}		
+		
 	      
 		if(direction == Direction.North) {
 			drawCarVerticalNorth(g);
@@ -73,7 +89,7 @@ public class CarView extends JPanel /*implements ActionListener*/{
 			drawCarVerticalSouth(g);
 		}
 	}
-	
+		
 	public void drawCarVerticalNorth(Graphics g) {
 		//draw wheels
 		g.setColor(Color.black);
@@ -125,21 +141,27 @@ public class CarView extends JPanel /*implements ActionListener*/{
 		Graphics2D g2d = (Graphics2D) g;
 		
 		g2d.setColor(Color.white);
+
+		//draw road lines for horizontal road
+		g2d.drawLine(x11,185,y11,185);
+		g2d.drawLine(m11,185,s11,185);
+		g2d.drawLine(j11,185,b11,185);
+		g2d.drawLine(p11,185,q11,185);
+		g2d.drawLine(a11,185,c11,185);
+		g2d.drawLine(k11,185,f11,185);
+		g2d.drawLine(d11,185,h11,185);
+		g2d.drawLine(x1,185,y1,185);
+		g2d.drawLine(m1,185,s1,185);
+		g2d.drawLine(j1,185,b1,185);
+		g2d.drawLine(p1,185,q1,185);
 		
-		int i;
-		
-		// creates a solid stroke with line width is 4
-		Stroke stroke = new BasicStroke(4);
-		for(i = 0; i < 25; i++) {
-			g2d.setStroke(stroke);
-			g2d.drawLine(start, 185, end, 185);
-			start = end + 10;
-			end = start + 20;
-		}
-//		if(engineOn == false) {
-			start = 0;
-			end = 20;
-//		}
+		//if engine is on, animate and start timer
+		if (engineOn == true && hasFuel == true) {
+			tm.start();
+		} else {
+			tm.stop();
+		}	
+
 		
 		if(direction == Direction.East) {
 			drawCarHorizontalEast(g);
@@ -205,11 +227,6 @@ public class CarView extends JPanel /*implements ActionListener*/{
 		
 	}
 	
-//	public void setTimerParameters(int velocityX, int velocityY) {
-//		velX = velocityX;
-//		velY = velocityY;
-//	}
-	
     public void setDirection(model.CarObject.Direction direction2) {
 		switch (direction2) {
 		case East:
@@ -246,18 +263,105 @@ public class CarView extends JPanel /*implements ActionListener*/{
 		}
 	}
 
-//	@Override
-//	public void actionPerformed(ActionEvent e) {
-//		// TODO Auto-generated method stub
-//		if(loops == 20) {
-//			System.out.println("herhgbntjgdrtngjkdrtgfjbklbjn");
-//			start = 0;
-//			end = 20;
-//			loops = 0;
-//		}
-//		start++;
-//		end++;
-//		repaint();
-//	}
-}
 
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+
+		if (direction == Direction.North) {
+			//if line goes out of frame, reset to the top
+			if (x < 0 || x > 400) {x = 0; y = 20;}
+			if (j < 0 || j > 400) {j = 0; b = 20;}
+			if (m < 0 || m > 400) {m = 0; s = 20;}
+			if (p < 0 || p > 400) {p = 0; q = 20;}
+			if (a < 0 || a > 400) {a = 0; c = 20;}
+			if (k < 0 || k > 400) {k = 0; f = 20;}
+			if (d < 0 || d > 400) {d = 0; h = 20;}
+			//increase velocity of each coordinate so lines move down
+			x = x + vel; y = y + vel;
+			m = m + vel; s = s + vel;
+			j = j + vel; b = b + vel;
+			p = p + vel; q = q + vel;
+			a = a + vel; c = c + vel;
+			k = k + vel; f = f + vel;
+			d = d + vel; h = h + vel;
+			repaint();		
+		}
+		
+		if (direction == Direction.South) {
+			//if line goes out of frame, reset to the bottom
+			if (x < 0 || x > 400) {x = 400; y = 380;}
+			if (j < 0 || j > 400) {j = 400; b = 380;}
+			if (m < 0 || m > 400) {m = 400; s = 380;}
+			if (p < 0 || q > 400) {p = 400; q = 380;}
+			if (a < 0 || a > 400) {a = 400; c = 380;}
+			if (k < 0 || k > 400) {k = 400; f = 380;}
+			if (d < 0 || d > 400) {d = 400; h = 380;}
+			//decrease velocity of each coordinate so lines move up
+			x = x - vel; y = y - vel;
+			m = m - vel; s = s - vel;
+			j = j - vel; b = b - vel;
+			p = p - vel; q = q - vel;
+			a = a - vel; c = c - vel;
+			k = k - vel; f = f - vel;
+			d = d - vel; h = h - vel;
+			repaint();		
+		}
+		if (direction == Direction.East) {
+			//if line goes out of frame, reset to the right
+			if (j11 < 0 || j11 > 640) {j11 = 640; b11 = 620;}
+			if (x11 < 0 || x11 > 640) {x11 = 640; y11 = 620;}
+			if (m11 < 0 || m11 > 640) {m11 = 640; s11 = 620;}
+			if (p11 < 0 || q11 > 640) {p11 = 640; q11 = 620;}
+			if (a11 < 0 || a11 > 640) {a11 = 640; c11 = 620;}
+			if (k11 < 0 || k11 > 640) {k11 = 640; f11 = 620;}
+			if (d11 < 0 || d11 > 640) {d11 = 640; h11 = 620;}
+			if (j1 < 0 || j1 > 640) {j1 = 640; b1 = 620;}
+			if (x1 < 0 || x1 > 640) {x1 = 640; y1 = 620;}
+			if (m1 < 0 || m1 > 640) {m1 = 640; s1 = 620;}
+			if (p1 < 0 || q1 > 640) {p1 = 640; q1 = 620;}
+			//decrease velocity of each coordinate so lines move left
+			x11 = x11 - vel; y11 = y11 - vel;
+			m11 = m11 - vel; s11 = s11 - vel;
+			j11 = j11 - vel; b11 = b11 - vel;
+			p11 = p11 - vel; q11 = q11 - vel;
+			a11 = a11 - vel; c11 = c11 - vel;
+			k11 = k11 - vel; f11 = f11 - vel;
+			d11 = d11 - vel; h11 = h11 - vel;
+			x1 = x1 - vel; y1 = y1 - vel;
+			m1 = m1 - vel; s1 = s1 - vel;
+			j1 = j1 - vel; b1 = b1 - vel;
+			p1 = p1 - vel; q1 = q1 - vel;
+			repaint();		
+		}
+		
+		if (direction == Direction.West) {
+			//if line goes out of frame, reset to the left
+			if (j11 < 0 || j11 > 640) {j11 = 0; b11 = 20;}
+			if (x11 < 0 || x11 > 640) {x11 = 0; y11 = 20;}
+			if (m11 < 0 || m11 > 640) {m11 = 0; s11 = 20;}
+			if (p11 < 0 || q11 > 640) {p11 = 0; q11 = 20;}
+			if (a11 < 0 || a11 > 640) {a11 = 0; c11 = 20;}
+			if (k11 < 0 || k11 > 640) {k11 = 0; f11 = 20;}
+			if (d11 < 0 || d11 > 640) {d11 = 0; h11 = 20;}
+			if (j1 < 0 || j1 > 640) {j1 = 0; b1 = 20;}
+			if (x1 < 0 || x1 > 640) {x1 = 0; y1 = 20;}
+			if (m1 < 0 || m1 > 640) {m1 = 0; s1 = 20;}
+			if (p1 < 0 || q1 > 640) {p1 = 0; q1 = 20;}
+			//increase velocity of each coordinate so lines move right
+			x11 = x11 + vel; y11 = y11 + vel;
+			m11 = m11 + vel; s11 = s11 + vel;
+			j11 = j11 + vel; b11 = b11 + vel;
+			p11 = p11 + vel; q11 = q11 + vel;
+			a11 = a11 + vel; c11 = c11 + vel;
+			k11 = k11 + vel; f11 = f11 + vel;
+			d11 = d11 + vel; h11 = h11 + vel;
+			x1 = x1 + vel; y1 = y1 + vel;
+			m1 = m1 + vel; s1 = s1 + vel;
+			j1 = j1 + vel; b1 = b1 + vel;
+			p1 = p1 + vel; q1 = q1 + vel;
+			repaint();		
+		}
+		
+	}
+
+}
