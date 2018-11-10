@@ -19,6 +19,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import com.sun.java.swing.plaf.windows.resources.windows;
 
@@ -43,6 +44,7 @@ public class DriveView {
 	private JTextField textField_1;
 	
 	private CarObject car;
+	private JTextField statusField;
 	public CarView carView;
 
 	/**
@@ -195,10 +197,20 @@ public class DriveView {
 		gbc_timeField.insets = new Insets(0, 0, 5, 5);
 		gbc_timeField.gridx = 7;
 		gbc_timeField.gridy = 7;
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("hh:mm a");
-		LocalTime localTime = LocalTime.now();
-		timeField.setText(dtf.format(localTime));
 		displayPanel.add(timeField, gbc_timeField);
+		Runnable r = new Runnable() {
+	         public void run() {
+	        	 // Constantly run infinite loop in background to fetch & update current time
+	        	for (int i = 0; i < 10; i++) {
+	        		i--;
+		     		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("hh:mm a");
+		    		LocalTime localTime = LocalTime.now();
+		    		timeField.setText(dtf.format(localTime));
+	        	}
+	         }
+	     };
+	     
+	    new Thread(r).start();
 		timeField.setColumns(10);
 		
 		JLabel tempLabel = new JLabel("TEMPERATURE");
@@ -220,6 +232,24 @@ public class DriveView {
 		gbc_tempField.gridx = 7;
 		gbc_tempField.gridy = 8;
 		displayPanel.add(tempField, gbc_tempField);
+		
+		JLabel statusLabel = new JLabel("ENGINE STATUS");
+		GridBagConstraints gbc_statusLabel = new GridBagConstraints();
+		gbc_statusLabel.anchor = GridBagConstraints.WEST;
+		gbc_statusLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_statusLabel.gridx = 5;
+		gbc_statusLabel.gridy = 9;
+		displayPanel.add(statusLabel, gbc_statusLabel);
+		
+		statusField = new JTextField();
+		GridBagConstraints gbc_statusField = new GridBagConstraints();
+		gbc_statusField.gridwidth = 3;
+		gbc_statusField.insets = new Insets(0, 0, 5, 5);
+		gbc_statusField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_statusField.gridx = 9;
+		gbc_statusField.gridy = 9;
+		displayPanel.add(statusField, gbc_statusField);
+		statusField.setColumns(10);
 		
 		JPanel simPanel = new JPanel();
 		simPanel.setBackground(Color.WHITE);
