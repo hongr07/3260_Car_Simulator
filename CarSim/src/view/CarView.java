@@ -130,9 +130,9 @@ public class CarView extends JPanel implements ActionListener {
 		g.fillRect(310, 135, 45, 95);
 		//draw top of car
 		g.setColor(Color.black);
-		g.drawRect(315, 150, 35, 30);
+		g.drawRect(315, 185, 35, 30);
 		g.setColor(Color.blue);
-		g.fillRect(315, 150, 35, 30);
+		g.fillRect(315, 185, 35, 30);
 	}
 	
 	public void drawCarVerticalSouth(Graphics g) {
@@ -151,9 +151,9 @@ public class CarView extends JPanel implements ActionListener {
 		g.fillRect(310, 135, 45, 95);
 		//draw top of car
 		g.setColor(Color.black);
-		g.drawRect(315, 185, 35, 30);
+		g.drawRect(315, 150, 35, 30);
 		g.setColor(Color.blue);
-		g.fillRect(315, 185, 35, 30);
+		g.fillRect(315, 150, 35, 30);
 	}
 	
 	public void drawHorizontalRoad(Graphics g) {
@@ -211,21 +211,35 @@ public class CarView extends JPanel implements ActionListener {
 		g.drawOval(310, 195, 15, 15);
 		g.fillOval(310, 195, 15, 15);
 		//draw top of car
-		g.setColor(Color.black);
-		g.drawRect(330, 145, 35, 25);
-		g.setColor(Color.blue);
-		g.fillRect(330, 145, 35, 25);
+//		g.setColor(Color.black);
+//		g.drawRect(330, 145, 35, 25);
+//		g.setColor(Color.blue);
+//		g.fillRect(330, 145, 35, 25);
 		//draw body
-		g.setColor(Color.black);
-		g.drawRect(300, 170, 80, 30);
-		g.setColor(Color.blue);
-		g.fillRect(300, 170, 80, 30);
-		//draw window
-		g.setColor(Color.black);
-		g.drawRect(348, 150, 13, 13);
-		g.setColor(Color.white);
-		g.fillRect(348, 150, 13, 13);
+//		g.setColor(Color.black);
+//		g.drawRect(300, 170, 80, 30);
 		
+		//draw top of car
+		g.setColor(Color.blue);
+		g.fillOval(300, 162, 56, 35);
+		//draw window
+		g.setColor(Color.white);
+		g.fillOval(308, 167, 35, 20);
+//		g.setColor(Color.blue);
+//		g.fillRect(300, 170, 80, 30);
+		//draw window
+//		g.setColor(Color.black);
+//		g.drawRect(348, 150, 13, 13);
+//		g.setColor(Color.white);
+//		g.fillRect(348, 150, 13, 13);
+		//draw body
+//		g.setColor(Color.black);
+//		g.drawRect(300, 180, 80, 20);
+		g.setColor(Color.blue);
+		g.fillRect(300, 180, 80, 20);
+		
+		g.setColor(Color.white);
+		g.drawString("GROOP4", 315, 195);
 	}
 	
 	public void drawCarHorizontalWest(Graphics g) {
@@ -240,19 +254,22 @@ public class CarView extends JPanel implements ActionListener {
 		g.fillOval(310, 195, 15, 15);
 		//draw top of car
 		g.setColor(Color.black);
-		g.drawRect(310, 145, 35, 25);
+//		g.drawOval(320, 152, 55, 35);
 		g.setColor(Color.blue);
-		g.fillRect(310, 145, 35, 25);
-		//draw body
-		g.setColor(Color.black);
-		g.drawRect(300, 170, 80, 30);
-		g.setColor(Color.blue);
-		g.fillRect(300, 170, 80, 30);
+		g.fillOval(324, 162, 56, 35);
 		//draw window
-		g.setColor(Color.black);
-		g.drawRect(315, 150, 13, 13);
 		g.setColor(Color.white);
-		g.fillRect(315, 150, 13, 13);
+		g.fillOval(336, 167, 35, 20);
+//		g.setColor(Color.white);
+//		g.fillRect(315, 150, 13, 13);
+		//draw body
+//		g.setColor(Color.black);
+//		g.drawRect(300, 180, 80, 20);
+		g.setColor(Color.blue);
+		g.fillRect(300, 180, 80, 20);
+		
+		g.setColor(Color.white);
+		g.drawString("GROOP4", 315, 195);
 		
 	}
 	
