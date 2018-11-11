@@ -48,7 +48,7 @@ public class ControlPanelView {
 	 */
 	private void render() {
 		frame = new JFrame("Car Control Panel");
-		frame.setBounds(80, 550, 900, 140);
+		frame.setBounds(100, 520, 900, 160);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		control_panel = new JPanel();
