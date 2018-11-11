@@ -31,6 +31,7 @@ public class ControlPanelView {
 	public ControlPanelView() {
 		render();
 		frame.setVisible(true);
+		frame.setResizable(false);
 	}
 
 	/**
@@ -41,6 +42,7 @@ public class ControlPanelView {
 		this.panelController = panelController;
 		render();
 		frame.setVisible(true);
+		frame.setResizable(false);
 	}
 	
 	/**
