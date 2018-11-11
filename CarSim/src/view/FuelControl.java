@@ -1,22 +1,29 @@
-package controllers;
+package view;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import controllers.ControlPanelController;
+import view.ControlPanelView.ChangeType;
+
 public class FuelControl {
 	private JPanel fuel_panel;
 	private JButton fuel_up;
 	private JButton fuel_down;
 	private JLabel fuel_label;
+	private ControlPanelController panelController;
 	
-	public FuelControl(JPanel control_panel) {
+	public FuelControl(JPanel control_panel,ControlPanelController panelController) {
+		this.panelController = panelController;
 		fuel_panel = new JPanel();
 		fuel_panel.setBackground(Color.LIGHT_GRAY);
 		GridBagConstraints gbc_fuel_panel = new GridBagConstraints();
@@ -53,5 +60,19 @@ public class FuelControl {
 		gbc_fuel_down.gridx = 0;
 		gbc_fuel_down.gridy = 3;
 		fuel_panel.add(fuel_down, gbc_fuel_down);
+		
+		//Listeners
+		fuel_up.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelController.changeFuel(ChangeType.UP);
+			}
+		});
+		fuel_down.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelController.changeFuel(ChangeType.DOWN);
+			}
+		});
 	}
 }

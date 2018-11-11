@@ -1,22 +1,29 @@
-package controllers;
+package view;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import controllers.ControlPanelController;
+import view.ControlPanelView.ChangeType;
+
 public class SpeedControl {
 	private JButton speed_up;
 	private JPanel speed_panel;
 	private JButton speed_down;
 	private JLabel speed_label;
+	private ControlPanelController panelController;
 
-	public SpeedControl(JPanel control_panel) {
+	public SpeedControl(JPanel control_panel, ControlPanelController panelController) {
+		this.panelController = panelController;
 		speed_panel = new JPanel();
 		speed_panel.setBackground(Color.LIGHT_GRAY);
 		GridBagConstraints gbc_speed_panel = new GridBagConstraints();
@@ -53,5 +60,19 @@ public class SpeedControl {
 		gbc_speed_down.gridx = 0;
 		gbc_speed_down.gridy = 3;
 		speed_panel.add(speed_down, gbc_speed_down);
+		
+		//Listeners
+		speed_up.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelController.changeSpeed(ChangeType.UP);
+			}
+		});
+		speed_down.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelController.changeSpeed(ChangeType.DOWN);
+			}
+		});
 	}
 }

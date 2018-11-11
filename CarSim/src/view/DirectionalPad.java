@@ -1,13 +1,19 @@
-package controllers;
+package view;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import controllers.ControlPanelController;
+import model.CarObject.Direction;
+import view.ControlPanelView.ChangeType;
 
 public class DirectionalPad {
 	private JPanel direction_panel;
@@ -16,8 +22,10 @@ public class DirectionalPad {
 	private JButton direction_west;
 	private JButton direciton_south;
 	private JLabel direction_label;
+	private ControlPanelController panelController;
 
-	public DirectionalPad (JPanel control_panel) {
+	public DirectionalPad (JPanel control_panel,ControlPanelController panelController) {
+		this.panelController = panelController;
 		direction_panel = new JPanel();
 		direction_panel.setBackground(Color.LIGHT_GRAY);
 		GridBagConstraints gbc_direction_panel = new GridBagConstraints();
@@ -69,5 +77,31 @@ public class DirectionalPad {
 		gbc_direciton_south.gridx = 1;
 		gbc_direciton_south.gridy = 3;
 		direction_panel.add(direciton_south, gbc_direciton_south);
+		
+		//Listeners
+		direction_north.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelController.changeDirection(Direction.North);
+			}
+		});
+		direciton_south.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelController.changeDirection(Direction.South);
+			}
+		});
+		direction_east.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelController.changeDirection(Direction.East);
+			}
+		});
+		direction_west.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelController.changeDirection(Direction.West);
+			}
+		});
 	}
 }

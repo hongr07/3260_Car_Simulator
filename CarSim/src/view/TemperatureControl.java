@@ -1,22 +1,31 @@
-package controllers;
+package view;
 
 import java.awt.Color;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import controllers.ControlPanelController;
+import view.ControlPanelView.ChangeType;
+
 public class TemperatureControl {
+	
 	private JPanel temp_panel;
 	private JButton temp_up;
 	private JButton temp_down;
 	private JLabel temp_label;
+	private ControlPanelController panelController;
 	
-	public TemperatureControl(JPanel control_panel) {
+	public TemperatureControl(JPanel control_panel, ControlPanelController panelController) {
+		this.panelController = panelController;
 		temp_panel = new JPanel();
 		temp_panel.setBackground(Color.LIGHT_GRAY);
 		GridBagConstraints gbc_temp_panel = new GridBagConstraints();
@@ -53,5 +62,23 @@ public class TemperatureControl {
 		gbc_temp_down.gridx = 0;
 		gbc_temp_down.gridy = 3;
 		temp_panel.add(temp_down, gbc_temp_down);
+		
+		
+		//Listeners
+		temp_up.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+//				System.out.println(e);
+				panelController.changeTemperature(ChangeType.UP);
+			}
+		});
+		temp_down.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+//				System.out.println(e);
+				panelController.changeTemperature(ChangeType.DOWN);
+			}
+		});
 	}
 }

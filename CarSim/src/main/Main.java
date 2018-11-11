@@ -6,7 +6,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import controllers.ControlPanelController;
-import controllers.ControlPanelView;
+import view.ControlPanelView;
 
 public class Main {
 
