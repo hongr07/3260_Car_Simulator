@@ -85,7 +85,7 @@ public class DriveView {
 	private void initialize() {
 		textField_3.setColumns(10);
 		frame = new JFrame("Car Simulation");
-		frame.setBounds(100, 100, 853, 416);
+		frame.setBounds(100, 100, 900, 420);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
