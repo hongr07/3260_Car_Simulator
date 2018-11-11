@@ -61,8 +61,8 @@ public class CarView extends JPanel implements ActionListener {
 	
 	public void paint(Graphics g) {
 		g.setColor(Color.green.darker());
-		g.drawRect(0,0,651,383);
-		g.fillRect(0,0,651,383);
+		g.drawRect(0,0,685,383);
+		g.fillRect(0,0,685,383);
 		
 		if(direction == Direction.North ||direction == Direction.South) {
 			drawVerticalRoad(g);
@@ -157,8 +157,8 @@ public class CarView extends JPanel implements ActionListener {
 	public void drawHorizontalRoad(Graphics g) {
 		//Horizontal road
 		g.setColor(Color.gray);
-		g.drawRect(0, 140, 654, 90);
-		g.fillRect(0, 140, 654, 90);
+		g.drawRect(0, 140, 685, 90);
+		g.fillRect(0, 140, 685, 90);
 		
 		Graphics2D g2d = (Graphics2D) g;
 		
