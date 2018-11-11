@@ -77,6 +77,7 @@ public class DriveView {
 		this.controller = controller;
 		initialize();
 		frame.setVisible(true);
+		frame.setResizable(false);
 	}
 
 	/**
