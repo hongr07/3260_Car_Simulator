@@ -49,9 +49,9 @@ public class DriveView {
 	public CarView carView;
 	private ControlPanelController controller;
 
-//	/**
-//	 * Launch the application.
-//	 */
+	/**
+	 * Launch the application.
+	 */
 //	public static void main(String[] args) {
 //		EventQueue.invokeLater(new Runnable() {
 //			public void run() {
@@ -77,7 +77,6 @@ public class DriveView {
 		this.controller = controller;
 		initialize();
 		frame.setVisible(true);
-		frame.setResizable(false);
 	}
 
 	/**
@@ -86,18 +85,16 @@ public class DriveView {
 	private void initialize() {
 		textField_3.setColumns(10);
 		frame = new JFrame();
-		frame.setBounds(100, 100, 905, 416);
+		frame.setBounds(100, 100, 853, 416);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		carView = new CarView(controller);
 		carView.setBounds(5,5,651,383);
-		carView = new CarView();
-		carView.setBounds(5,5,685,383);
 		frame.getContentPane().add(carView);
 		
 		JPanel displayPanel = new JPanel();
-		displayPanel.setBounds(702, 6, 197, 382);
+		displayPanel.setBounds(656, 6, 197, 382);
 		frame.getContentPane().add(displayPanel);
 		GridBagLayout gbl_displayPanel = new GridBagLayout();
 		gbl_displayPanel.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 94, 0, 0, 0, 0, 0, 0, 0, 0, 0};
