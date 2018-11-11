@@ -28,7 +28,7 @@ public class ControlPanelController {
 	}
 	
 	public void renderSimulation() {
-		sim_view = new DriveView(carObject);
+		sim_view = new DriveView(carObject, this);
 	}
 	
 	//change temperature by 0.5

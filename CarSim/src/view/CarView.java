@@ -7,14 +7,34 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
+import controllers.ControlPanelController;
+import view.ControlPanelView.ChangeType;
+
 public class CarView extends JPanel implements ActionListener {
 
 	public enum Direction {
 	    North, South, East, West 
 	}
+	private int decreaseFuelRate = 5000; 
+	private ControlPanelController controller;
 	private Direction direction = Direction.North;
 	private boolean engineOn = false, hasFuel = false, hasSpeed = false;
 	Timer tm = new Timer(10, this);
+	
+	ActionListener decreaseFuelAction = new ActionListener() {
+		public void actionPerformed(ActionEvent evt) {
+			controller.changeFuel(ChangeType.DOWN);
+		}
+	};
+	Timer fuelTm = new Timer(decreaseFuelRate, decreaseFuelAction);
+	
+	public CarView() {
+		
+	}
+	
+	public CarView(ControlPanelController controller) {
+		this.controller = controller;
+	}
 	
 	//define values for vertical road line coordinates
 	int x = 0, y = 20;
@@ -77,8 +97,10 @@ public class CarView extends JPanel implements ActionListener {
 		if (engineOn == true && hasFuel == true && hasSpeed == true) {
 			tm.start();
 			//check fuel
+			fuelTm.start();
 		} else {
 			tm.stop();
+			fuelTm.stop();
 		}		
 		
 	      
@@ -159,8 +181,10 @@ public class CarView extends JPanel implements ActionListener {
 		if (engineOn == true && hasFuel == true && hasSpeed == true) {
 			tm.start();
 			//check fuel
+			fuelTm.start();
 		} else {
 			tm.stop();
+			fuelTm.stop();
 		}	
 
 		
@@ -273,31 +297,42 @@ public class CarView extends JPanel implements ActionListener {
 	}
 	
 	public void incrementVelocity(float speed) {
-		if(speed == 11) { vel += 1;}
-		if(speed == 21) { vel += 1;}
-		if(speed == 31) { vel += 1;}
-		if(speed == 41) { vel += 1;}
-		if(speed == 51) { vel += 1;}
-		if(speed == 61) { vel += 1;}
-		if(speed == 71) { vel += 1;}
-		if(speed == 81) { vel += 1;}
-		if(speed == 91) { vel += 1;}
-		if(speed == 101) { vel += 1;}
-		if(speed == 111) { vel += 1;}
+		if(speed == 11) { incrementVelocityRate();}
+		if(speed == 21) { incrementVelocityRate();}
+		if(speed == 31) { incrementVelocityRate();}
+		if(speed == 41) { incrementVelocityRate();}
+		if(speed == 51) { incrementVelocityRate();}
+		if(speed == 61) { incrementVelocityRate();}
+		if(speed == 71) { incrementVelocityRate();}
+		if(speed == 81) { incrementVelocityRate();}
+		if(speed == 91) { incrementVelocityRate();}
+		if(speed == 101) { incrementVelocityRate();}
+		if(speed == 111) { incrementVelocityRate();}
+	}
+	private void incrementVelocityRate() {
+		decreaseFuelRate = decreaseFuelRate - 250;
+		vel+=1;
+		fuelTm.setDelay(decreaseFuelRate);
 	}
 	
 	public void decrementVelocity(float speed) {
-		if(speed == 10) { vel -= 1;}
-		if(speed == 20) { vel -= 1;}
-		if(speed == 30) { vel -= 1;}
-		if(speed == 40) { vel -= 1;}
-		if(speed == 50) { vel -= 1;}
-		if(speed == 60) { vel -= 1;}
-		if(speed == 70) { vel -= 1;}
-		if(speed == 80) { vel -= 1;}
-		if(speed == 90) { vel -= 1;}
-		if(speed == 100) { vel -= 1;}
-		if(speed == 110) { vel -= 1;}
+		if(speed == 10) { decrementVelocityRate();}
+		if(speed == 20) { decrementVelocityRate();}
+		if(speed == 30) { decrementVelocityRate();}
+		if(speed == 40) { decrementVelocityRate();}
+		if(speed == 50) { decrementVelocityRate();}
+		if(speed == 60) { decrementVelocityRate();}
+		if(speed == 70) { decrementVelocityRate();}
+		if(speed == 80) { decrementVelocityRate();}
+		if(speed == 90) { decrementVelocityRate();}
+		if(speed == 100) { decrementVelocityRate();}
+		if(speed == 110) { decrementVelocityRate();}
+	}
+	
+	private void decrementVelocityRate() {
+		decreaseFuelRate = decreaseFuelRate + 250;
+		vel-=1;
+		fuelTm.setDelay(decreaseFuelRate);
 	}
 
 

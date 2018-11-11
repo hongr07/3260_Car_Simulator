@@ -23,6 +23,7 @@ import java.util.concurrent.TimeUnit;
 
 import com.sun.java.swing.plaf.windows.resources.windows;
 
+import controllers.ControlPanelController;
 import model.CarObject;
 
 import java.awt.Color;
@@ -46,6 +47,7 @@ public class DriveView {
 	private CarObject car;
 	private JTextField statusField;
 	public CarView carView;
+	private ControlPanelController controller;
 
 	/**
 	 * Launch the application.
@@ -70,8 +72,9 @@ public class DriveView {
 		initialize();
 	}
 	
-	public DriveView(CarObject car) {
+	public DriveView(CarObject car, ControlPanelController controller) {
 		this.car = car;
+		this.controller = controller;
 		initialize();
 		frame.setVisible(true);
 	}
@@ -86,7 +89,7 @@ public class DriveView {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		carView = new CarView();
+		carView = new CarView(controller);
 		carView.setBounds(5,5,651,383);
 		frame.getContentPane().add(carView);
 		
