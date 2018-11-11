@@ -85,16 +85,16 @@ public class DriveView {
 	private void initialize() {
 		textField_3.setColumns(10);
 		frame = new JFrame("Car Simulation");
-		frame.setBounds(100, 100, 853, 416);
+		frame.setBounds(100, 100, 901, 416);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		carView = new CarView(controller);
-		carView.setBounds(5,5,651,383);
+		carView.setBounds(5,5,681,383);
 		frame.getContentPane().add(carView);
 		
 		JPanel displayPanel = new JPanel();
-		displayPanel.setBounds(656, 6, 197, 382);
+		displayPanel.setBounds(698, 6, 197, 382);
 		frame.getContentPane().add(displayPanel);
 		GridBagLayout gbl_displayPanel = new GridBagLayout();
 		gbl_displayPanel.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 94, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -245,6 +245,7 @@ public class DriveView {
 		displayPanel.add(statusLabel, gbc_statusLabel);
 		
 		statusField = new JTextField();
+		statusField.setEditable(false);
 		statusField.setText(car.getEngineString());
 		GridBagConstraints gbc_statusField = new GridBagConstraints();
 		gbc_statusField.gridwidth = 3;
