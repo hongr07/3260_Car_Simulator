@@ -14,7 +14,7 @@ public class ControlPanelController {
 	
 	public ControlPanelController () {
 		this.carObject = CarObject.getInstance();
-		carObject.printObject();
+//		carObject.printObject();
 		initialize();
 	}
 
@@ -44,7 +44,7 @@ public class ControlPanelController {
 					carObject.setTemperature((temp-0.5f));
 				}
 			}
-			System.out.println(carObject.getTemperature());
+//			System.out.println(carObject.getTemperature()); 
 			
 			//update car view
 			//here
@@ -60,7 +60,7 @@ public class ControlPanelController {
 		
 		try {
 			carObject.setDirection(dir);
-			System.out.println(carObject.getDirection());
+//			System.out.println(carObject.getDirection());
 			
 			//update car view
 			sim_view.carView.setDirection(carObject.getDirection());
@@ -91,9 +91,9 @@ public class ControlPanelController {
 				sim_view.carView.setFuel(carObject.getFuel());
 				sim_view.carView.setSpeed(carObject.getSpeed());
 				sim_view.carView.repaint();
-			System.out.println(carObject.isEngineOn());
-			System.out.println("----------");
-			carObject.printObject();
+//			System.out.println(carObject.isEngineOn());
+//			System.out.println("----------");
+//			carObject.printObject();
 			//update car view
 			//here
 			sim_view.updateView();
@@ -126,7 +126,7 @@ public class ControlPanelController {
 					sim_view.carView.setFuel(carObject.getFuel());
 				}
 			}
-			System.out.println(carObject.getFuel());
+//			System.out.println(carObject.getFuel());
 			
 			//update car view
 			//here
@@ -161,7 +161,7 @@ public class ControlPanelController {
 					sim_view.carView.setSpeed(carObject.getSpeed());
 				}
 			}
-			System.out.println(carObject.getSpeed());
+//			System.out.println(carObject.getSpeed());
 			
 			//update car view
 			//here

@@ -98,6 +98,8 @@ public class CarView extends JPanel implements ActionListener {
 			tm.start();
 			//check fuel
 			fuelTm.start();
+		} else if (engineOn == true && hasFuel) {
+			fuelTm.start();
 		} else {
 			tm.stop();
 			fuelTm.stop();
@@ -181,6 +183,8 @@ public class CarView extends JPanel implements ActionListener {
 		if (engineOn == true && hasFuel == true && hasSpeed == true) {
 			tm.start();
 			//check fuel
+			fuelTm.start();
+		} else if (engineOn == true && hasFuel) {
 			fuelTm.start();
 		} else {
 			tm.stop();
