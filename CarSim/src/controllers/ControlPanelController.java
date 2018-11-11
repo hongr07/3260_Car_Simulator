@@ -165,6 +165,8 @@ public class ControlPanelController {
 				else if(speed == 1) {
 					carObject.setSpeed((speed-1));
 					sim_view.carView.setSpeed(carObject.getSpeed());
+					carObject.setEngineOn(false);
+					sim_view.carView.setEngine(false);
 				}
 			}
 //			System.out.println(carObject.getSpeed());
