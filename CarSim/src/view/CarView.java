@@ -37,7 +37,7 @@ public class CarView extends JPanel implements ActionListener {
 	int m1 = 460, s1 = 480; 
 	int j1 = 520, b1 = 540;
 	int p1 = 580, q1 = 600;
-	int vel = 2;
+	int vel = 1;
 	
 	public void paint(Graphics g) {
 		g.setColor(Color.green.darker());
@@ -268,6 +268,34 @@ public class CarView extends JPanel implements ActionListener {
 		} else {
 			hasSpeed = false;
 		}
+	}
+	
+	public void incrementVelocity(float speed) {
+		if(speed == 11) { vel += 1;}
+		if(speed == 21) { vel += 1;}
+		if(speed == 31) { vel += 1;}
+		if(speed == 41) { vel += 1;}
+		if(speed == 51) { vel += 1;}
+		if(speed == 61) { vel += 1;}
+		if(speed == 71) { vel += 1;}
+		if(speed == 81) { vel += 1;}
+		if(speed == 91) { vel += 1;}
+		if(speed == 101) { vel += 1;}
+		if(speed == 111) { vel += 1;}
+	}
+	
+	public void decrementVelocity(float speed) {
+		if(speed == 10) { vel -= 1;}
+		if(speed == 20) { vel -= 1;}
+		if(speed == 30) { vel -= 1;}
+		if(speed == 40) { vel -= 1;}
+		if(speed == 50) { vel -= 1;}
+		if(speed == 60) { vel -= 1;}
+		if(speed == 70) { vel -= 1;}
+		if(speed == 80) { vel -= 1;}
+		if(speed == 90) { vel -= 1;}
+		if(speed == 100) { vel -= 1;}
+		if(speed == 110) { vel -= 1;}
 	}
 
 

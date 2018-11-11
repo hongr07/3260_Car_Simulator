@@ -144,6 +144,7 @@ public class ControlPanelController {
 			if (type == ChangeType.UP) {
 				if (speed < 120 && speed > 0) {
 					carObject.setSpeed((speed+1));	
+					sim_view.carView.incrementVelocity(carObject.getSpeed());
 				}
 				else if (speed == 0) {
 					carObject.setSpeed((speed+1));
@@ -153,6 +154,7 @@ public class ControlPanelController {
 			} else if (type == ChangeType.DOWN) {
 				if (speed > 1) {
 					carObject.setSpeed((speed-1));
+					sim_view.carView.decrementVelocity(carObject.getSpeed());
 				}
 				else if(speed == 1) {
 					carObject.setSpeed((speed-1));
