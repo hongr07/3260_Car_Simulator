@@ -130,9 +130,9 @@ public class CarView extends JPanel implements ActionListener {
 		g.fillRect(310, 135, 45, 95);
 		//draw top of car
 		g.setColor(Color.black);
-		g.drawRect(315, 185, 35, 30);
+		g.drawRoundRect(313, 179, 39, 48, 25, 25);
 		g.setColor(Color.blue);
-		g.fillRect(315, 185, 35, 30);
+		g.fillRoundRect(313, 179, 39, 48, 25, 25);
 	}
 	
 	public void drawCarVerticalSouth(Graphics g) {
@@ -151,9 +151,9 @@ public class CarView extends JPanel implements ActionListener {
 		g.fillRect(310, 135, 45, 95);
 		//draw top of car
 		g.setColor(Color.black);
-		g.drawRect(315, 150, 35, 30);
+		g.drawRoundRect(313, 139, 39, 48, 25, 25);
 		g.setColor(Color.blue);
-		g.fillRect(315, 150, 35, 30);
+		g.fillRoundRect(313, 139, 39, 48, 25, 25);
 	}
 	
 	public void drawHorizontalRoad(Graphics g) {
@@ -220,9 +220,13 @@ public class CarView extends JPanel implements ActionListener {
 //		g.drawRect(300, 170, 80, 30);
 		
 		//draw top of car
+		g.setColor(Color.black);
+		g.drawRoundRect(300, 162, 56, 35, 35, 45);
 		g.setColor(Color.blue);
-		g.fillOval(300, 162, 56, 35);
+		g.fillRoundRect(300, 162, 56, 35, 35 , 45);
 		//draw window
+		g.setColor(Color.black);
+		g.drawOval(308, 167, 35, 20);
 		g.setColor(Color.white);
 		g.fillOval(308, 167, 35, 20);
 //		g.setColor(Color.blue);
@@ -233,8 +237,8 @@ public class CarView extends JPanel implements ActionListener {
 //		g.setColor(Color.white);
 //		g.fillRect(348, 150, 13, 13);
 		//draw body
-//		g.setColor(Color.black);
-//		g.drawRect(300, 180, 80, 20);
+		g.setColor(Color.black);
+		g.drawRect(300, 180, 80, 20);
 		g.setColor(Color.blue);
 		g.fillRect(300, 180, 80, 20);
 		
@@ -254,17 +258,17 @@ public class CarView extends JPanel implements ActionListener {
 		g.fillOval(310, 195, 15, 15);
 		//draw top of car
 		g.setColor(Color.black);
-//		g.drawOval(320, 152, 55, 35);
+		g.drawRoundRect(324, 162, 56, 35, 35, 45);
 		g.setColor(Color.blue);
-		g.fillOval(324, 162, 56, 35);
+		g.fillRoundRect(324, 162, 56, 35, 35, 45);
 		//draw window
+		g.setColor(Color.black);
+		g.drawOval(336, 167, 35, 20);
 		g.setColor(Color.white);
 		g.fillOval(336, 167, 35, 20);
-//		g.setColor(Color.white);
-//		g.fillRect(315, 150, 13, 13);
 		//draw body
-//		g.setColor(Color.black);
-//		g.drawRect(300, 180, 80, 20);
+		g.setColor(Color.black);
+		g.drawRect(300, 180, 80, 20);
 		g.setColor(Color.blue);
 		g.fillRect(300, 180, 80, 20);
 		
