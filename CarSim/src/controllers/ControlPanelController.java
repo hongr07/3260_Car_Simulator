@@ -2,6 +2,7 @@ package controllers;
 
 import model.CarObject;
 import model.CarObject.Direction;
+import sun.print.resources.serviceui;
 import view.ControlPanelView;
 import view.ControlPanelView.ChangeType;
 import view.DriveView;
@@ -82,6 +83,9 @@ public class ControlPanelController {
 					sim_view.carView.setDirection(carObject.getDirection());
 					//set fuel to false if engine is off
 					sim_view.carView.setEngine(false);
+				} else if (engine == false && carObject.getFuel() <= 0) {
+					carObject.setEngineOn(false);
+					sim_view.carView.setEngine(false);
 				} else {
 					carObject.setEngineOn(true);
 					sim_view.carView.setDirection(carObject.getDirection());
@@ -124,6 +128,8 @@ public class ControlPanelController {
 					//if fuel becomes 0 stop car simulation
 					carObject.setFuel((fuel-1f));
 					sim_view.carView.setFuel(carObject.getFuel());
+					carObject.setEngineOn(false);
+					sim_view.carView.setEngine(false);
 				}
 			}
 //			System.out.println(carObject.getFuel());
