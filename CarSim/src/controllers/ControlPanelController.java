@@ -82,19 +82,15 @@ public class ControlPanelController {
 					sim_view.carView.setDirection(carObject.getDirection());
 					//set fuel to false if engine is off
 					sim_view.carView.setEngine(false);
-					if(carObject.getSpeed() > 0) {
-						sim_view.carView.setFuel(carObject.getFuel());
-					}
-					sim_view.carView.repaint();
 				} else {
 					carObject.setEngineOn(true);
 					sim_view.carView.setDirection(carObject.getDirection());
 					sim_view.carView.setEngine(true);
-					if(carObject.getSpeed() > 0) {
-						sim_view.carView.setFuel(carObject.getFuel());
-					}
-					sim_view.carView.repaint();
 				}
+				//checking speed and fuel to begin driving
+				sim_view.carView.setFuel(carObject.getFuel());
+				sim_view.carView.setSpeed(carObject.getSpeed());
+				sim_view.carView.repaint();
 			System.out.println(carObject.isEngineOn());
 			System.out.println("----------");
 			carObject.printObject();
@@ -116,7 +112,7 @@ public class ControlPanelController {
 					carObject.setFuel((fuel+1f));	
 				} 
 				else if (fuel == 0) {
-					carObject.setFuel((fuel+1f));	
+					carObject.setFuel((fuel+1f));
 					sim_view.carView.setFuel(carObject.getFuel());
 					sim_view.carView.repaint();
 				}
@@ -151,7 +147,7 @@ public class ControlPanelController {
 				}
 				else if (speed == 0) {
 					carObject.setSpeed((speed+1));
-					sim_view.carView.setFuel(carObject.getFuel());
+					sim_view.carView.setSpeed(carObject.getSpeed());
 					sim_view.carView.repaint();
 				}
 			} else if (type == ChangeType.DOWN) {
@@ -160,7 +156,7 @@ public class ControlPanelController {
 				}
 				else if(speed == 1) {
 					carObject.setSpeed((speed-1));
-					sim_view.carView.setFuel(0);
+					sim_view.carView.setSpeed(carObject.getSpeed());
 				}
 			}
 			System.out.println(carObject.getSpeed());

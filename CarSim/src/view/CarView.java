@@ -13,8 +13,7 @@ public class CarView extends JPanel implements ActionListener {
 	    North, South, East, West 
 	}
 	private Direction direction = Direction.North;
-	private boolean engineOn = false;
-	private boolean hasFuel = false;
+	private boolean engineOn = false, hasFuel = false, hasSpeed = false;
 	Timer tm = new Timer(10, this);
 	
 	//define values for vertical road line coordinates
@@ -75,7 +74,7 @@ public class CarView extends JPanel implements ActionListener {
 		g2d.drawLine(330,d,330,h);
 		
 		// if engine is one, animate lines and start timer
-		if (engineOn == true && hasFuel == true) {
+		if (engineOn == true && hasFuel == true && hasSpeed == true) {
 			tm.start();
 		} else {
 			tm.stop();
@@ -156,7 +155,7 @@ public class CarView extends JPanel implements ActionListener {
 		g2d.drawLine(p1,185,q1,185);
 		
 		//if engine is on, animate and start timer
-		if (engineOn == true && hasFuel == true) {
+		if (engineOn == true && hasFuel == true && hasSpeed == true) {
 			tm.start();
 		} else {
 			tm.stop();
@@ -260,6 +259,14 @@ public class CarView extends JPanel implements ActionListener {
 			hasFuel = true;
 		} else {
 			hasFuel = false;
+		}
+	}
+	
+	public void setSpeed(float f) {
+		if(f > 0) {
+			hasSpeed = true;
+		} else {
+			hasSpeed = false;
 		}
 	}
 
