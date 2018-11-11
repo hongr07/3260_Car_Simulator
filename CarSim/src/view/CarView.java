@@ -76,6 +76,7 @@ public class CarView extends JPanel implements ActionListener {
 		// if engine is one, animate lines and start timer
 		if (engineOn == true && hasFuel == true && hasSpeed == true) {
 			tm.start();
+			//check fuel
 		} else {
 			tm.stop();
 		}		
@@ -157,6 +158,7 @@ public class CarView extends JPanel implements ActionListener {
 		//if engine is on, animate and start timer
 		if (engineOn == true && hasFuel == true && hasSpeed == true) {
 			tm.start();
+			//check fuel
 		} else {
 			tm.stop();
 		}	

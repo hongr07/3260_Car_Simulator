@@ -242,6 +242,7 @@ public class DriveView {
 		displayPanel.add(statusLabel, gbc_statusLabel);
 		
 		statusField = new JTextField();
+		statusField.setText(car.getEngineString());
 		GridBagConstraints gbc_statusField = new GridBagConstraints();
 		gbc_statusField.gridwidth = 3;
 		gbc_statusField.insets = new Insets(0, 0, 5, 5);
@@ -262,6 +263,7 @@ public class DriveView {
 		speedField.setText(Integer.toString(car.getSpeed()));
 		fuelField.setText(Float.toString(car.getFuel()));
 		dirField.setText(car.getDirectionString());
+		statusField.setText(car.getEngineString());
 	}
 	
 }

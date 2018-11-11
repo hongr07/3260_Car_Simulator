@@ -70,6 +70,13 @@ public class CarObject {
 	public boolean isEngineOn() {
 		return engineOn;
 	}
+	public String getEngineString() {
+		if (this.engineOn) {
+			return "On";
+		} else {
+			return "Off";
+		}
+	}
 	public void setEngineOn(boolean engineOn) {
 		this.engineOn = engineOn;
 	}
